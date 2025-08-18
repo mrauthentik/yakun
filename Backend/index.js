@@ -21,7 +21,7 @@ app.get('/dashboard', middleware, (req,res)=> {
 
 //Connect to our MongoDB
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGOOSE_URI)
 .then(()=> {console.log('MongoDB connected ✅✅')
     app.listen(process.env.PORT, ()=>{
         console.log(`Server running on port http://localhost:${process.env.PORT} 🚀`)
