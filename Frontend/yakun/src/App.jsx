@@ -11,7 +11,15 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route path='*' element={<h2>404 the Page is not found</h2>}/>
+          <Route path='*' element={
+            <div className="not-found">
+              <h2>404 - Page Not Found</h2>
+              <p>Sorry, the page you are looking for does not exist.</p>
+              <Link to="/">
+                <button>Return to Home</button>
+              </Link>
+            </div>
+          }/>
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/dashboard' element={<Dashboard />}/>

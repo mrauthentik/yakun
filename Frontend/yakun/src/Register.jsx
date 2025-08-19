@@ -1,40 +1,70 @@
-import { useNavigate, Link} from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react'
-const Register = ()=> {
+
+const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const navigate = useNavigate()
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // Here you would typically handle registration logic
+        console.log('Registration attempt with:', { name, email, password })
+    }
+    
     return (
-        <div className="login">
-            <h1>Register all information</h1>
-            <form >
-                <input 
-                    type="text" 
-                    placeholder="input name" 
-                    required 
-                    value={name}
-                    onChange={(e)=>setName(e.target.value)}
-                    />
-                <input 
-                    type="email" 
-                    placeholder="input email" 
-                    required 
-                    value={email}
-                    onChange={(e)=>setEmail(e.target.value)}
-                    />
-                <input 
-                    type="password" 
-                    placeholder="input password" 
-                    required 
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                    />
-                <button> Submit</button>
-            </form>
+        <div className="register">
+            <div className="container">
+                <h1>Create Account</h1>
+                <p className="form-subtitle">Join Yakun for secure authentication</p>
+                
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="name">Full Name</label>
+                        <input 
+                            id="name"
+                            type="text" 
+                            placeholder="Enter your full name" 
+                            required 
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </div>
+                    
+                    <div className="form-group">
+                        <label htmlFor="email">Email Address</label>
+                        <input 
+                            id="email"
+                            type="email" 
+                            placeholder="Enter your email" 
+                            required 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input 
+                            id="password"
+                            type="password" 
+                            placeholder="Create a strong password" 
+                            required 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    
+                    <button type="submit">Create Account</button>
+                </form>
+                
+                <div className="auth-links">
+                    <p>Already have an account? <Link to="/login">Sign In</Link></p>
+                </div>
+            </div>
         </div>
     )
 }
-
 
 export default Register
