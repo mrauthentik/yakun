@@ -1,13 +1,20 @@
 import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [token, setToken] = useState('')
     const navigate = useNavigate()
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+      const response =  await axios.post('http://localhost:4200/api/auth/login', {email, password})
+        setToken(response.data.token)
+       localStorage.setItem('token', response.data.token)
+       alert('User Login Successful')
+      navigate('/dashboard')
         // Here you would typically handle login logic
         console.log('Login attempt with:', { email, password })
     }
