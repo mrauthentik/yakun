@@ -11,7 +11,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         // Here you would typically handle registration logic
-        await axios.post("http://localhost:4200/api/auth/register", {name, email, password})
+        await axios.post("https://yakun-c0xy.onrender.com/api/auth/register", {name, email, password})
         alert('Registration was successful')
         navigate('/login')
         console.log('Registration attempt with:', { name, email, password })

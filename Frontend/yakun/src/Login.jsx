@@ -10,7 +10,7 @@ const Login = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-      const response =  await axios.post('http://localhost:4200/api/auth/login', {email, password})
+      const response =  await axios.post('https://yakun-c0xy.onrender.com/api/auth/login', {email, password})
         setToken(response.data.token)
        localStorage.setItem('token', response.data.token)
        alert('User Login Successful')
